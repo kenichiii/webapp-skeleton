@@ -1,0 +1,36 @@
+extensions:
+
+    - Contributte\EventDispatcher\DI\EventDispatcherExtension
+    - Nittro\Bridges\NittroDI\NittroExtension
+    - Jahudka\ComponentEvents\ComponentEventsExtension
+
+      #events: Contributte\EventDispatcher\DI\EventDispatcherExtension
+      # register all event bridges
+      #events.extra: Contributte\Events\Extra\DI\EventBridgesExtension
+
+parameters:
+
+
+application:
+	errorPresenter: Error
+	mapping:
+	    *: App\UI\*\*Presenter
+
+
+database:
+	dsn: 'sqlite::memory:'
+	user:
+	password:
+
+
+latte:
+	strictTypes: yes
+	strictParsing: yes
+	extensions:
+		- App\UI\Accessory\LatteExtension
+
+
+di:
+	export:
+		parameters: no
+		tags: no

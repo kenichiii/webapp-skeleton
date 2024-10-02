@@ -1,0 +1,22 @@
+<?php
+%A%
+		$iterations = 0;
+		foreach ([1, 0] as $cond) /* line 1 */ {
+			echo '	';
+			echo LR\Filters::escapeHtmlText($cond) /* line 2 */;
+			echo "\n";
+			ob_start(function () {}) /* line 3 */;
+			try {
+				echo '		before
+';
+				if ($cond) /* line 5 */ continue;
+				echo '		after
+	';
+			} finally {
+				$ʟ_fi = new LR\FilterInfo('html');
+				echo LR\Filters::convertTo($ʟ_fi, 'html', $this->filters->filterContent('upper', $ʟ_fi, $this->filters->filterContent('stripHtml', $ʟ_fi, ob_get_clean())));
+			}
+			echo "\n";
+			$iterations++;
+		}
+%A%

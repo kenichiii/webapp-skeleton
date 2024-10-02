@@ -1,0 +1,45 @@
+<?php
+%A%
+final class Template%a% extends Latte\Runtime\Template
+{
+
+	public function main(): array
+	{
+%A%
+		echo '<ul>
+';
+		$iterations = 0;
+		foreach ($people as $person) /* line %d% */ {
+			echo '	<li>';
+			echo LR\Filters::escapeHtmlText(($this->filters->upper)($person)) /* line %d% */;
+			echo '</li>
+';
+			$iterations++;
+		}
+		echo '{* comment latte *}
+</ul>
+
+<p>Default: ';
+		echo LR\Filters::escapeHtmlText($person) /* line %d% */;
+		echo '</p>
+
+<p>Default: ';
+		echo LR\Filters::escapeHtmlText($person) /* line %d% */;
+		echo '</p>
+
+<p>Default: {$person}</p>
+
+
+{a}
+{ {/ {/syntax
+';
+		return get_defined_vars();
+	}
+
+
+	public function prepare(): void
+	{
+%A%
+	}
+
+}

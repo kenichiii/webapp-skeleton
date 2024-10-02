@@ -1,0 +1,413 @@
+<?php
+%A%
+final class Template%a% extends Latte\Runtime\Template
+{
+	protected const BLOCKS = [
+		['bl' => 'blockBl'],
+	];
+
+
+	public function main(): array
+	{
+%A%
+		echo '
+<p';
+		$ʟ_tmp = ['title' => 'hello', 'lang' => isset($lang) ? $lang : null];
+		echo LR\Filters::htmlAttributes(isset($ʟ_tmp[0]) && is_array($ʟ_tmp[0]) ? $ʟ_tmp[0] : $ʟ_tmp) /* line %d% */;
+		echo '> </p>
+
+<p';
+		$ʟ_tmp = [['title' => 'hello']];
+		echo LR\Filters::htmlAttributes(isset($ʟ_tmp[0]) && is_array($ʟ_tmp[0]) ? $ʟ_tmp[0] : $ʟ_tmp) /* line %d% */;
+		echo '> </p>
+
+';
+		$iterations = 0;
+		foreach ($iterator = $ʟ_it = new LR\CachingIterator([1,2,3], $ʟ_it ?? null) as $foo) /* line %d% */ {
+			echo '	<b';
+			echo ($ʟ_tmp = array_filter([$iterator->even ? 'even' : null])) ? ' class="' . LR\Filters::escapeHtmlAttr(implode(" ", array_unique($ʟ_tmp))) . '"' : "" /* line %d% */;
+			echo '>item</b>
+';
+			$iterations++;
+		}
+		$iterator = $ʟ_it = $ʟ_it->getParent();
+		echo "\n";
+		$iterations = 0;
+		foreach ($iterator = $ʟ_it = new LR\CachingIterator([1, 2, 3], $ʟ_it ?? null) as $foo) /* line %d% */ {
+			echo '<p';
+			echo ($ʟ_tmp = array_filter([$iterator->even ? 'even' : null])) ? ' class="' . LR\Filters::escapeHtmlAttr(implode(" ", array_unique($ʟ_tmp))) . '"' : "" /* line %d% */;
+			echo '>';
+			echo LR\Filters::escapeHtmlText($foo) /* line %d% */;
+			echo '</p>
+';
+			$iterations++;
+		}
+		$iterator = $ʟ_it = $ʟ_it->getParent();
+		echo '
+<p';
+		echo ($ʟ_tmp = array_filter(['foo', (false ? 'first' : null), 'odd', (true ? 'foo' : 'bar')])) ? ' class="' . LR\Filters::escapeHtmlAttr(implode(" ", array_unique($ʟ_tmp))) . '"' : "" /* line %d% */;
+		echo '>n:class</p>
+
+<p';
+		echo ($ʟ_tmp = array_filter([false ? 'first' : null])) ? ' class="' . LR\Filters::escapeHtmlAttr(implode(" ", array_unique($ʟ_tmp))) . '"' : "" /* line %d% */;
+		echo '>n:class empty</p>
+<p';
+		echo ($ʟ_tmp = array_filter([true ? 'bem--modifier' : null])) ? ' class="' . LR\Filters::escapeHtmlAttr(implode(" ", array_unique($ʟ_tmp))) . '"' : "" /* line %d% */;
+		echo '>n:class with BEM</p>
+
+
+';
+		if ($this->getParentName()) {
+			return get_defined_vars();
+		}
+		$this->renderBlock('bl', get_defined_vars()) /* line %d% */;
+		echo '
+
+
+
+
+<ul title="foreach">
+';
+		$iterations = 0;
+		foreach ($people as $person) /* line %d% */ {
+			echo '	<li>';
+			echo LR\Filters::escapeHtmlText($person) /* line %d% */;
+			echo '</li>
+';
+			$iterations++;
+		}
+		echo '</ul>
+
+<ul title="foreach">
+';
+		$iterations = 0;
+		foreach ($people as $person) /* line %d% */ {
+			echo '	<li>
+		';
+			echo LR\Filters::escapeHtmlText($person) /* line %d% */;
+			echo '
+	</li>
+';
+			$iterations++;
+		}
+		echo '</ul>
+
+<ul title="inner foreach">
+	<li>
+';
+		$iterations = 0;
+		foreach ($people as $person) /* line %d% */ {
+			echo '		';
+			echo LR\Filters::escapeHtmlText($person) /* line %d% */;
+			echo "\n";
+			$iterations++;
+		}
+		echo '	</li>
+</ul>
+
+<ul title="tag if">
+';
+		if ($ʟ_if[1] = (true)) /* line %d% */ {
+			echo '	<li>
+';
+		}
+		echo '		';
+		echo LR\Filters::escapeHtmlText($person) /* line %d% */;
+		echo "\n";
+		if ($ʟ_if[1]) /* line %d% */ {
+			echo '	</li>
+';
+		}
+		echo '</ul>
+
+<ul title="for">
+';
+		for ($i=0;
+		$i<3;
+		$i++) /* line %d% */ {
+			echo '	<li>';
+			echo LR\Filters::escapeHtmlText($i) /* line %d% */;
+			echo '</li>
+';
+		}
+		echo '</ul>
+
+<ul title="white">
+';
+		while (--$i>0) /* line %d% */ {
+			echo '	<li>';
+			echo LR\Filters::escapeHtmlText($i) /* line %d% */;
+			echo '</li>
+';
+		}
+		echo '</ul>
+
+';
+		if (true) /* line %d% */ {
+			echo '<p>
+	<div><p>true</div>
+</p>
+';
+		}
+		echo "\n";
+		if (true) /* line %d% */ {
+			echo '<p>
+	<div><p>true</p></div>
+</p>
+';
+		}
+		echo "\n";
+		if (false) /* line %d% */ {
+			echo '<p>
+	<div><p>false</div>
+</p>
+';
+		}
+		echo "\n";
+		if (false) /* line %d% */ {
+			echo '<p>
+	<div><p>false</p></div>
+</p>
+';
+		}
+		echo "\n";
+		if (strlen('{$name}') > 5) /* line %d% */ {
+			echo '<p>noLatte</p>
+';
+		}
+		echo '
+<ul title="if + foreach">
+';
+		$iterations = 0;
+		foreach ($people as $person) /* line %d% */ {
+			if (strlen($person)===4) /* line %d% */ {
+				echo '	<li>';
+				echo LR\Filters::escapeHtmlText($person) /* line %d% */;
+				echo '</li>
+';
+			}
+			$iterations++;
+		}
+		echo '</ul>
+
+<ul title="if + inner-if + inner-foreach">
+';
+		if (empty($iterator)) /* line %d% */ {
+			echo '	<li>';
+			$iterations = 0;
+			foreach ($people as $person) /* line %d% */ {
+				if (strlen($person)===4) /* line %d% */ {
+					echo LR\Filters::escapeHtmlText($person) /* line %d% */;
+				}
+				$iterations++;
+			}
+			echo '</li>
+';
+		}
+		echo '</ul>
+
+<ul title="inner-if + inner-foreach">
+';
+		$iterations = 0;
+		foreach ($people as $person) /* line %d% */ {
+			if (strlen($person)===4) /* line %d% */ {
+				echo '	<li>';
+				echo LR\Filters::escapeHtmlText(($this->filters->lower)($person)) /* line %d% */;
+				echo '</li>
+';
+			}
+			$iterations++;
+		}
+		echo '</ul>
+
+';
+		if ($ʟ_if[0] = (true)) /* line %d% */ {
+			echo '<b>';
+		}
+		echo 'bold';
+		if ($ʟ_if[0]) /* line %d% */ {
+			echo '</b>';
+		}
+		echo ' ';
+		if ($ʟ_if[0] = (false)) /* line %d% */ {
+			echo '<b>';
+		}
+		echo 'normal';
+		if ($ʟ_if[0]) /* line %d% */ {
+			echo '</b>
+';
+		}
+		echo "\n";
+		if ($ʟ_if[0] = (true)) /* line %d% */ {
+			echo '<b';
+			echo ($ʟ_tmp = array_filter(['first'])) ? ' class="' . LR\Filters::escapeHtmlAttr(implode(" ", array_unique($ʟ_tmp))) . '"' : "" /* line %d% */;
+			echo '>';
+		}
+		echo 'bold';
+		if ($ʟ_if[0]) /* line %d% */ {
+			echo '</b>
+';
+		}
+		echo '
+<meta>
+';
+		if (true) /* line %d% */ {
+			echo '<meta>
+';
+		}
+		echo '<meta>
+
+';
+		$iterations = 0;
+		foreach ([0] as $foo) /* line %d% */ {
+			if (1) /* line %d% */ {
+				$iterations = 0;
+				foreach ([1] as $foo) /* line %d% */ {
+					if ($ʟ_if[0] = (0)) /* line %d% */ {
+						echo '<span>';
+					}
+					$iterations++;
+				}
+				$iterations = 0;
+				foreach ([2] as $foo) /* line %d% */ {
+					if (2) /* line %d% */ {
+						echo 'Hello';
+					}
+					$iterations++;
+				}
+				$iterations = 0;
+				foreach ([1] as $foo) /* line %d% */ {
+					if ($ʟ_if[0]) /* line %d% */ {
+						echo '</span>
+';
+					}
+					$iterations++;
+				}
+			}
+			$iterations++;
+		}
+		echo '
+
+';
+		if ($ʟ_if[0] = (true)) /* line %d% */ {
+			echo '<div>
+';
+		}
+		$ʟ_try[0] = [$ʟ_it ?? null];
+		ob_start(function () {});
+		try /* line %d% */ {
+			if ($ʟ_if[1] = (false)) /* line %d% */ {
+				echo '	<span>
+';
+			}
+			throw new LR\RollbackException;
+			if ($ʟ_if[1]) /* line %d% */ {
+				echo '	</span>
+';
+			}
+
+		} catch (Throwable $ʟ_e) {
+			ob_end_clean();
+			if (!($ʟ_e instanceof LR\RollbackException) && isset($this->global->coreExceptionHandler)) {
+				($this->global->coreExceptionHandler)($ʟ_e, $this);
+			}
+
+			ob_start();
+		} finally {
+			echo ob_get_clean();
+			$iterator = $ʟ_it = $ʟ_try[0][0];
+		}
+		if ($ʟ_if[0]) /* line %d% */ {
+			echo '</div>
+';
+		}
+		echo '
+
+<ul title="foreach break">
+';
+		$iterations = 0;
+		foreach ($people as $person) /* line %d% */ {
+			echo '	<li>';
+			echo LR\Filters::escapeHtmlText($person) /* line %d% */;
+			if (true) /* line %d% */ {
+				echo "</li>\n";
+				break;
+			}
+			echo '</li>
+';
+			$iterations++;
+		}
+		echo '</ul>
+
+<ul title="foreach continue">
+';
+		$iterations = 0;
+		foreach ($people as $person) /* line %d% */ {
+			echo '	<li>';
+			echo LR\Filters::escapeHtmlText($person) /* line %d% */;
+			if (true) /* line %d% */ {
+				echo "</li>\n";
+				continue;
+			}
+			echo '</li>
+';
+			$iterations++;
+		}
+		echo '</ul>
+
+
+<ul title="inner foreach break">
+	<li>';
+		$iterations = 0;
+		foreach ($people as $person) /* line %d% */ {
+			echo LR\Filters::escapeHtmlText($person) /* line %d% */;
+			if (true) /* line %d% */ break;
+			$iterations++;
+		}
+		echo '</li>
+</ul>
+
+<ul title="inner foreach continue">
+	<li>';
+		$iterations = 0;
+		foreach ($people as $person) /* line %d% */ {
+			echo LR\Filters::escapeHtmlText($person) /* line %d% */;
+			if (true) /* line %d% */ continue;
+			$iterations++;
+		}
+		echo '</li>
+</ul>
+';
+%A%
+	}
+
+
+	public function prepare(): void
+	{
+%A%
+	}
+
+
+	/** {block bl} on line %d% */
+	public function blockBl(array $ʟ_args): void
+	{
+		extract($this->params);
+		extract($ʟ_args);
+		unset($ʟ_args);
+		echo '<ul title="block + if + foreach">
+';
+		$iterations = 0;
+		foreach ($people as $person) /* line %d% */ {
+			if (strlen($person)===4) /* line %d% */ {
+				echo '	<li>';
+				echo LR\Filters::escapeHtmlText($person) /* line %d% */;
+				echo '</li>
+';
+			}
+			$iterations++;
+		}
+		echo '</ul>
+';
+	}
+
+}

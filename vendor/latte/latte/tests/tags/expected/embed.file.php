@@ -1,0 +1,59 @@
+<?php
+%A%
+final class Template%a% extends Latte\Runtime\Template
+{
+	protected const BLOCKS = [
+		1 => ['a' => 'blockA'],
+		2 => ['a' => 'blockA1'],
+	];
+
+
+	public function main(): array
+	{
+		extract($this->params);
+		echo "\n";
+		$this->enterBlockLayer(1, get_defined_vars()) /* line 2 */;
+		if (false) {
+			$this->renderBlock('a', get_defined_vars()) /* line 3 */;
+			echo "\n";
+		}
+		try {
+			$this->createTemplate("embed1.latte", [], "embed")->renderToContentType('html') /* line 2 */;
+		} finally {
+			$this->leaveBlockLayer();
+		}
+		echo '
+	';
+		return get_defined_vars();
+	}
+
+
+	/** {block a} on line 3 */
+	public function blockA(array $ʟ_args): void
+	{
+		extract(end($this->varStack));
+		extract($ʟ_args);
+		unset($ʟ_args);
+
+		$this->enterBlockLayer(2, get_defined_vars()) /* line 4 */;
+		if (false) {
+			echo '					';
+			$this->renderBlock('a', get_defined_vars()) /* line 5 */;
+			echo "\n";
+		}
+		try {
+			$this->createTemplate("embed2.latte", [], "embed")->renderToContentType('html') /* line 4 */;
+		} finally {
+			$this->leaveBlockLayer();
+		}
+		echo "\n";
+	}
+
+
+	/** {block a} on line 5 */
+	public function blockA1(array $ʟ_args): void
+	{
+		echo 'nested embeds A';
+	}
+
+}

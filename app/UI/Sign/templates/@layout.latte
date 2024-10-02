@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Webapp Skeleton</title>
+
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="{$basePath}/assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="{$basePath}/assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+
+    <link rel="stylesheet" type="text/css" href="{$basePath}/assets/libs/nittro/nittro.min.css" />
+
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="{$basePath}/assets/css/style.css">
+    <link rel="stylesheet" href="{$basePath}/assets/customStyle.css">
+    <!-- End layout styles -->
+
+    <link rel="shortcut icon" type="image/png" href="{$basePath}/assets/custom/logo.png" />
+
+    <!-- Initialise the _stack library -->
+    <script type="application/javascript">window._stack = [];</script>
+</head>
+
+<body>
+<!--
+    Don't forget "async" and "defer" :-)
+ -->
+<script type="application/javascript" src="{$basePath}/assets/libs/nittro/nittro.min.js" async defer></script>
+
+
+<div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper">
+        <div class="row w-100 m-0">
+            <div class="content-wrapper full-page-wrapper d-flex align-items-center auth login-bg">
+
+                <div class="card col-lg-4 mx-auto">
+                    <div class="card-body px-5 py-5">
+
+
+                        <div n:snippet="content" n:inner-block="content" class="nittro-transition-auto nittro-transition-fade"></div>
+
+                    </div>
+                </div>
+
+            </div>
+            <!-- content-wrapper ends -->
+        </div>
+        <!-- row ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
+<!-- plugins:js -->
+<script src="{$basePath}/assets/admin/assets/vendors/js/vendor.bundle.base.js"></script>
+<!-- endinject -->
+<!-- Plugin js for this page -->
+<!-- End plugin js for this page -->
+
+<script>
+    $(".form-check label,.form-radio label").append('<i class="input-helper"></i>');
+</script>
+
+
+</body>
+</html>
